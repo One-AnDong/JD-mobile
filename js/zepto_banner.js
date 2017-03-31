@@ -5,12 +5,13 @@ $(function () {
   var oBannerBox=$(".jd_banner");
   var oImageBox=$(".jd_banner ul:first-child");
   var oPointBox=$(".jd_banner ul:last-child");
+  var aPoints=oPointBox.find("li");
   var width=oBannerBox.width();
   var index=1;
   //禁止拖动
   document.ontouchmove=function (e) {
     e.preventDefault();
-  }
+  };
   //运动函数
   function fnAnimate(callback) {
     oImageBox.animate({transform:"translateX("+(-index*width)+"px)"},400,"ease",function () {
@@ -24,8 +25,16 @@ $(function () {
 
         index=8;
 
+      }
+      else
+      {
+        oImageBox.css({transform:"translateX("+(-index*width)+"px)"});
+        aPoints.each(function () {
+          this.className="";
+        });
+        aPoints[index-1].className="now";
       };
-      oImageBox.css({transform:"translateX("+(-index*width)+"px)"});
+
     });
 
     callback&&callback();
