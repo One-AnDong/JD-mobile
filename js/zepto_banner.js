@@ -26,14 +26,13 @@ $(function () {
         index=8;
 
       }
-      else
-      {
-        oImageBox.css({transform:"translateX("+(-index*width)+"px)"});
-        aPoints.each(function () {
-          this.className="";
-        });
-        aPoints[index-1].className="now";
-      };
+    
+      oImageBox.css({transform:"translateX("+(-index*width)+"px)"});
+      aPoints.each(function () {
+        this.className="";
+      });
+      aPoints[index-1].className="now";
+      
 
     });
 
